@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antibioottiopas</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <h1>Antibioottiopas</h1>
+        <h2>NEWS pisteet</h2>
+        <table id="newsTable">
+            <thead>
+                <tr>
+                    <th>Parametri</th>
+                    <th>Pisteet 0</th>
+                    <th>Pisteet 1</th>
+                    <th>Pisteet 2</th>
+                    <th>Pisteet 3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Hengitystaajuus</td>
+                    <td><input type="radio" name="respiratoryRate" value="0"> 12-20</td>
+                    <td><input type="radio" name="respiratoryRate" value="1"> 9-11, 21-24</td>
+                    <td><input type="radio" name="respiratoryRate" value="2"> 25-30</td>
+                    <td><input type="radio" name="respiratoryRate" value="3"> &lt;8, &gt;30</td>
+                </tr>
+                <tr>
+                    <td>Systolinen verenpaine</td>
+                    <td><input type="radio" name="bloodPressure" value="0"> 111-219</td>
+                    <td><input type="radio" name="bloodPressure" value="1"> 101-110</td>
+                    <td><input type="radio" name="bloodPressure" value="2"> 91-100</td>
+                    <td><input type="radio" name="bloodPressure" value="3"> &lt;90, &gt;220</td>
+                </tr>
+                <tr>
+                    <td>Syke</td>
+                    <td><input type="radio" name="heartRate" value="0"> 51-90</td>
+                    <td><input type="radio" name="heartRate" value="1"> 41-50, 91-110</td>
+                    <td><input type="radio" name="heartRate" value="2"> 111-130</td>
+                    <td><input type="radio" name="heartRate" value="3"> &lt;40, &gt;130</td>
+                </tr>
+                <tr>
+                    <td>Tajunnan taso (GCS)</td>
+                    <td><input type="radio" name="consciousness" value="0"> ≥13</td>
+                    <td colspan="3"><input type="radio" name="consciousness" value="3"> &lt;13</td>
+                </tr>
+                <tr>
+                    <td>Happisaturaatio</td>
+                    <td><input type="radio" name="oxygenSaturation" value="0"> 96-100</td>
+                    <td><input type="radio" name="oxygenSaturation" value="1"> 94-95</td>
+                    <td><input type="radio" name="oxygenSaturation" value="2"> 92-93</td>
+                    <td><input type="radio" name="oxygenSaturation" value="3"> &lt;92</td>
+                </tr>
+            </tbody>
+        </table>
+        <button onclick="calculateNEWS()">Laske NEWS pisteet</button>
+        <p id="newsScore"></p>
+        <p id="riskCategory"></p>
+
+        <label for="disease">Valitse sairausryhmä:</label>
+        <select id="disease" onchange="showRecommendations()">
+            <option value="" disabled selected>Valitse...</option>
+            <option value="cns">Keskushermostoinfektiot</option>
+            <option value="sepsis">Sepsis</option>
+            <option value="respiratory">Hengitystieinfektiot</option>
+            <option value="skin">Ihon ja pehmytkudosten infektiot</option>
+            <option value="uti">Virtsatieinfektiot</option>
+            <option value="gi">Mahasuolikanavan infektiot</option>
+            <option value="gynecological">Gynekologiset infektiot</option>
+            <option value="endocarditis">Endokardiitti</option>
+            <option value="neutropenic">Neutropeenisen potilaan hoito</option>
+            <option value="bone">Luu- ja nivelinfektiot</option>
+            <option value="pump">Antibioottipumppujen käyttö</option>
+        </select>
+        <div id="recommendations"></div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
+
